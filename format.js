@@ -16,9 +16,8 @@ function format(...args) {
                 preformat(ret, ...arg);
             }
             else if (('t' in arg) && ('v' in arg)) {
-                ret.push({
-                    t: arg.t,
-                    v: arg.v,
+                preformat(ret, {
+                    [arg.t]: arg.v
                 });
             }
             else if ('emote' in arg) {

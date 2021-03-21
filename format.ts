@@ -30,6 +30,7 @@ export type UnformattedMessageChunkObject =
 | UMC_URI
 | UMC_Link
 | UMC_Mention
+| UMC_Undefined
 
 interface UMC_Emote {
 	emote: string;
@@ -45,6 +46,11 @@ interface UMC_Link {
 }
 interface UMC_Mention {
 	mention: string;
+}
+interface UMC_Undefined {
+	text?: string;
+	// As the name might suggest, this may lead to undefined behaviour.
+	[index: string]: string;
 }
 
 export interface FormattedMessageChunk {
@@ -72,9 +78,8 @@ export function format (...args: UnformattedMessageChunk[]): FormattedMessageChu
 			if (arg instanceof Array) {
 				preformat(ret, ...arg);
 			} else if (('t' in arg) && ('v' in arg)) {
-				ret.push({
-					t: arg.t,
-					v: arg.v,
+				preformat(ret, {
+					[arg.t]: arg.v
 				});
 			} else if ('emote' in arg) {
 				ret.push({
