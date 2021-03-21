@@ -1,0 +1,22 @@
+{
+  "name": "doge-tools",
+  "version": "0.0.0",
+  "description": "Tools for the DogeHouse API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prokopschield/doge-tools.git"
+  },
+  "keywords": [
+    "DogeHouse"
+  ],
+  "author": "Prokop Schield",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/prokopschield/doge-tools/issues"
+  },
+  "homepage": "https://github.com/prokopschield/doge-tools#readme"
+}
