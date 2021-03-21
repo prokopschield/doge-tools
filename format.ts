@@ -48,7 +48,6 @@ interface UMC_Mention {
 	mention: string;
 }
 interface UMC_Undefined {
-	text?: string;
 	// As the name might suggest, this may lead to undefined behaviour.
 	[index: string]: string;
 }
@@ -107,7 +106,7 @@ export function format (...args: UnformattedMessageChunk[]): FormattedMessageChu
 					v: arg.mention,
 				});
 			} else {
-				preformat(ret, ...Object.keys(arg).map(key => arg[key]));
+				preformat(ret, ...Object.keys(arg).map(key => (arg as UMC_Undefined)[key]));
 			}
 		} else if (arg) {
 			ret.push({
